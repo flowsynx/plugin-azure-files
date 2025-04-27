@@ -1,0 +1,81 @@
+name: Build, create, and release
+
+on:      
+  workflow_dispatch:
+    inputs:
+      rel_version:
+        description: 'Release version (examples: 1.9.0-rc.1, 1.9.1)'
+        required: true 
+        type: string
+
+jobs:
+  build:
+    runs-on: ubuntu-latest    
+    env:
+      ARTIFACT_DIR: ./release
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0 #fetch-depth is needed for GitVersion
+
+    - name: Create Branch
+      uses: peterjgrainger/action-create-branch@v2.2.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      with:
+        branch: 'release-${{ inputs.rel_version }}'
+        sha: '${{ github.event.pull_request.head.sha }}'
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3.2.0
+      with:
+        dotnet-version: 9.0.x
+
+    - name: Restore dependencies
+      run: dotnet restore
+      
+    - name: Build
+      run: dotnet build --configuration Release /p:Version='${{ inputs.rel_version }}' --no-restore
+
+    - name: Test
+      run: dotnet test --configuration Release /p:Version='${{ inputs.rel_version }}' --no-build
+
+    - name: Publish project
+      run: dotnet publish src/FlowSynx.Plugins.Azure.Files.csproj -c Release -o "${{github.workspace}}/publish"
+        
+    - name: Zip the output files
+      run: |
+          mkdir -p "${{github.workspace}}/dist"
+          cd "${{github.workspace}}/publish"
+          7z a -tzip "${{github.workspace}}/dist/release-${{ inputs.rel_version }}.zip" *
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: uploaded-artifacts
+        path: "${{github.workspace}}/dist"
+
+  release:
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/master' # only run job if on the master branch
+    env:
+      ARTIFACT_DIR: ./downloaded-artifacts
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: uploaded-artifacts
+          path: ${{ env.ARTIFACT_DIR }}
+
+      - name: generate checksum files
+        run: cd ${ARTIFACT_DIR} && for i in *; do sha256sum -b $i > "$i.sha256"; done && cd -
+      
+      - name: Create GitHub Release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: v${{ inputs.rel_version }}
+          name: Azure Files Plugin v${{ inputs.rel_version }}
+          artifacts: "**/*.*"
+          body: "This is the v${{ inputs.rel_version }} release of Azure Files Storage for FlowSynx System."
+          token: ${{ secrets.GH_TOKEN }}
