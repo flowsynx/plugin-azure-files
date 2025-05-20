@@ -1,6 +1,6 @@
 ﻿namespace FlowSynx.Plugins.Azure.Files.Models;
 
-public class WriteParameters
+internal class WriteParameters
 {
     public string? Path { get; set; }
     public object? Data { get; set; }

@@ -9,7 +9,7 @@ using FlowSynx.Plugins.Azure.Files.Extensions;
 
 namespace FlowSynx.Plugins.Azure.Files.Services;
 
-public class AzureFilesManager: IAzureFilesManager
+internal class AzureFilesManager: IAzureFilesManager
 {
     private readonly IPluginLogger _logger;
     private readonly ShareClient _client;

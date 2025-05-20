@@ -4,7 +4,7 @@ using FlowSynx.Plugins.Azure.Files.Models;
 
 namespace FlowSynx.Plugins.Azure.Files.Services;
 
-public class AzureFilesConnection: IAzureFilesConnection
+internal class AzureFilesConnection: IAzureFilesConnection
 {
     public ShareClient Connect(AzureFilesSpecifications specifications)
     {

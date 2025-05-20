@@ -2,7 +2,7 @@
 
 namespace FlowSynx.Plugins.Azure.Files.Models;
 
-public class AzureFilesSpecifications : PluginSpecifications
+internal class AzureFilesSpecifications : PluginSpecifications
 {
     [RequiredMember]
     public string ShareName { get; set; } = string.Empty;

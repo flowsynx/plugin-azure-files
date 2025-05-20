@@ -2,7 +2,7 @@
 
 namespace FlowSynx.Plugins.Azure.Files.Services;
 
-public interface IAzureFilesManager
+internal interface IAzureFilesManager
 {
     Task Create(PluginParameters parameters, CancellationToken cancellationToken);
     Task Delete(PluginParameters parameters, CancellationToken cancellationToken);

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace FlowSynx.Plugins.Azure.Files.Extensions;
 
-public static class ConverterExtensions
+internal static class ConverterExtensions
 {
     public static async Task<PluginContext> ToContext(this ShareFileClient fileClient, bool? includeMetadata,
         CancellationToken cancellationToken)

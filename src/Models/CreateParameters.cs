@@ -1,6 +1,6 @@
 ﻿namespace FlowSynx.Plugins.Azure.Files.Models;
 
-public class CreateParameters
+internal class CreateParameters
 {
     public string Path { get; set; } = string.Empty;
 }

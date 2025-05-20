@@ -1,6 +1,6 @@
 ﻿namespace FlowSynx.Plugins.Azure.Files.Models;
 
-public class DeleteParameters
+internal class DeleteParameters
 {
     public string Path { get; set; } = string.Empty;
 }
