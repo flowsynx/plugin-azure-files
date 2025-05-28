@@ -20,10 +20,13 @@ public class AzureFilePlugin : IPlugin
             {
                 Id = Guid.Parse("cd7d1271-ce52-4cc3-b0b4-3f4f72b2fa5d"),
                 Name = "Azure.Files",
+                CompanyName = "FlowSynx",
                 Description = Resources.PluginDescription,
-                Version = new PluginVersion(1, 0, 0),
+                Version = new PluginVersion(1, 1, 1),
                 Namespace = PluginNamespace.Connectors,
-                Author = "FlowSynx LLC."
+                Authors = new List<string> { "FlowSynx" },
+                Copyright = "© FlowSynx. All rights reserved.",
+                Tags = new List<string>() { "FlowSynx", "Azure", "Files", "Cloud" }
             };
         }
     }
