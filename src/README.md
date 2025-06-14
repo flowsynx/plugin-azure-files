@@ -1,4 +1,4 @@
-# Azure Files plugin for FlowSynx engine
+## Azure Files plugin for FlowSynx engine
 
 The **Azure Files Plugin** is a pre-packaged, plug-and-play integration component for the FlowSynx engine. It enables secure and configurable access to Azure Files storage as part of FlowSynx no-code/low-code automation workflows.
 
