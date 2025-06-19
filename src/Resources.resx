@@ -145,7 +145,7 @@
     <value>The specified parent path does not exist.</value>
   </data>
   <data name="PluginDescription" xml:space="preserve">
-    <value>FlowSynx plugin for managing Microsoft Azure File storage system.</value>
+    <value>Enables integration with Azure Files for SMB-based shared storage. Useful for lifting and shifting apps's data to Azure.</value>
   </data>
   <data name="ReflectionBasedAccessIsNotAllowed" xml:space="preserve">
     <value>Reflection-based access is not allowed.</value>

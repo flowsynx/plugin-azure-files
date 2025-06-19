@@ -28,9 +28,10 @@ public class AzureFilePlugin : IPlugin
                 Copyright = "© FlowSynx. All rights reserved.",
                 Icon = "flowsynx.png",
                 ReadMe = "README.md",
-                RepositoryUrl = "https://github.com/flowsynx/plugin-azure-blobs",
+                RepositoryUrl = "https://github.com/flowsynx/plugin-azure-files",
                 ProjectUrl = "https://flowsynx.io",
-                Tags = new List<string>() { "FlowSynx", "Azure", "Files", "Cloud" }
+                Tags = new List<string>() { "FlowSynx", "Azure", "Files", "Cloud" },
+                Category = PluginCategories.StorageTransfer
             };
         }
     }

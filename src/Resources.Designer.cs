@@ -142,7 +142,7 @@ namespace FlowSynx.Plugins.Azure.Files {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to FlowSynx plugin for managing Microsoft Azure File storage system..
+        ///   Looks up a localized string similar to Enables integration with Azure Files for SMB-based shared storage. Useful for lifting and shifting apps&apos;s data to Azure..
         /// </summary>
         internal static string PluginDescription {
             get {
