@@ -22,7 +22,7 @@ public class AzureFilePlugin : IPlugin
                 Name = "Azure.Files",
                 CompanyName = "FlowSynx",
                 Description = Resources.PluginDescription,
-                Version = new PluginVersion(1, 0, 0),
+                Version = new Version(1, 1, 0),
                 Category = PluginCategory.Storage,
                 Authors = new List<string> { "FlowSynx" },
                 Copyright = "© FlowSynx. All rights reserved.",
@@ -31,6 +31,7 @@ public class AzureFilePlugin : IPlugin
                 RepositoryUrl = "https://github.com/flowsynx/plugin-azure-files",
                 ProjectUrl = "https://flowsynx.io",
                 Tags = new List<string>() { "FlowSynx", "Azure", "Files", "Cloud" },
+                MinimumFlowSynxVersion = new Version(1, 1, 1),
             };
         }
     }
